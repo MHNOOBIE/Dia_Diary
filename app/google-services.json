@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "197259366973",
+    "firebase_url": "https://dia-diary.firebaseio.com",
+    "project_id": "dia-diary",
+    "storage_bucket": "dia-diary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197259366973:android:68d5836900fc9ac5",
+        "android_client_info": {
+          "package_name": "com.example.mahdi.dia_diary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197259366973-7au2i6fmpva737k1kpee23q8eiqgfvc8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mahdi.dia_diary",
+            "certificate_hash": "b607c2f432259d1efb6874b50532975009cc5f80"
+          }
+        },
+        {
+          "client_id": "197259366973-b7f0oca5bklijrau9q4orjalblrct11b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWMiJCqiO1wQXlPsabXbTt-7LiwVGsavs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197259366973-b7f0oca5bklijrau9q4orjalblrct11b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
