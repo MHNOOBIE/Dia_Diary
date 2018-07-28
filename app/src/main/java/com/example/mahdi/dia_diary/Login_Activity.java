@@ -76,12 +76,12 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
             String Email = email_id.getText().toString();
             String Password = password.getText().toString();
             if(Email.isEmpty()){
-                Toast.makeText(this,"Please ! Enter your email .",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Enter your email .",Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if(Password.isEmpty()){
-                Toast.makeText(this,"Please ! Enter your password .",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Enter your password .",Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -100,12 +100,17 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
                             } else {
                                 // If sign in fails, display a message to the user.
-                                FirebaseAuthException e = (FirebaseAuthException )task.getException();
+                                if(task.getException()!=null)
+                                Toast.makeText(Login_Activity.this, "Authentication Failed ." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                                 pbar.setVisibility(View.GONE);
                                 login_bt.setVisibility(View.VISIBLE);
-                                Toast.makeText(Login_Activity.this,e.getMessage(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
+
+
+
+                                }
+
+
 
                             // ...
                         }

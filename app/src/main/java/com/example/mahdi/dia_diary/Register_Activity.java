@@ -114,11 +114,12 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                                 startActivity(intent);
                                 finish();
                             } else {
-                                FirebaseAuthException e = (FirebaseAuthException )task.getException();
+                                if(task.getException()!=null)
+                                    Toast.makeText(Register_Activity.this, "Registration Failed ." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                                 pbar.setVisibility(View.GONE);
                                 register_bt.setVisibility(View.VISIBLE);
-                                Toast.makeText(Register_Activity.this, "Registration failed ."+ e.getMessage(),
-                                        Toast.LENGTH_SHORT).show();
+
 
                             }
 
