@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="#ECEFF1"
     xmlns:android="http://schemas.android.com/apk/res/android" >
@@ -15,11 +17,11 @@
         android:id="@+id/logout_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="312dp"
         android:background="@color/colorPrimary"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toEndOf="@+id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -38,11 +40,14 @@
         android:id="@+id/button2"
         android:layout_width="115dp"
         android:layout_height="101dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="40dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="48dp"
-        android:background="#00E676"
+        android:layout_marginTop="32dp"
+        android:background="#651FFF"
         android:text="Glucose\nTracker"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -51,11 +56,14 @@
         android:layout_width="115dp"
         android:layout_height="101dp"
         android:layout_marginEnd="40dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="48dp"
-        android:background="#69F0AE"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="#304FFE"
         android:text="Weekly progress"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <android.support.constraint.Guideline
@@ -129,6 +137,36 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="1.0" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="115dp"
+        android:layout_height="101dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:background="#7C4DFF"
+        android:text="Log Entry"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="115dp"
+        android:layout_height="101dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="#536DFE"
+        android:text="Tips"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

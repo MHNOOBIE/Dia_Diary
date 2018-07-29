@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -110,6 +112,13 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                                 Toast.makeText(Register_Activity.this,"Registration Successful .",Toast.LENGTH_LONG);
                                 //FirebaseUser user = mAuth.getCurrentUser();
                                 //updateUI(user);
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference myRef = database.getReference("message");
+
+                                myRef.setValue("Hello, World!")
+
+
+
                                 Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
                                 startActivity(intent);
                                 finish();
