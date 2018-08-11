@@ -14,12 +14,12 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -73,7 +73,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
             String Email = email_id.getText().toString();
             String Password = password.getText().toString();
             String CPassword = cpassword.getText().toString();
-            String Username = username.getText().toString();
+            final String Username = username.getText().toString();
 
 
             if(Username.isEmpty()){
@@ -109,19 +109,32 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Toast.makeText(Register_Activity.this,"Registration Successful .",Toast.LENGTH_LONG);
-                                //FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference("message");
 
-                                myRef.setValue("Hello, World!")
+                                Users user = new Users(Username,country);
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                                db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(Register_Activity.this,"Registration Successful .",Toast.LENGTH_LONG).show();
+                                        //FirebaseUser user = mAuth.getCurrentUser();
+                                        //updateUI(user);
+
+                                        Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        mAuth.getCurrentUser().delete();
+                                        Toast.makeText(Register_Activity.this,"Registration Failed. Could not connect to database. Try again later .",Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
 
 
 
-                                Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
-                                startActivity(intent);
-                                finish();
                             } else {
                                 if(task.getException()!=null)
                                     Toast.makeText(Register_Activity.this, "Registration Failed ." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
