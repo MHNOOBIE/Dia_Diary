@@ -12,6 +12,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button logout_bt;
+    private Button gt_bt;
+    private Button log_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
 
         logout_bt = findViewById(R.id.logout_bt);
-        logout_bt.setOnClickListener(this);
+        gt_bt = findViewById(R.id.gt_bt);
+        log_bt = findViewById(R.id.log_bt);
 
+        logout_bt.setOnClickListener(this);
+        gt_bt.setOnClickListener(this);
+        log_bt.setOnClickListener(this);
     }
 
     @Override
@@ -32,6 +38,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(HomeActivity.this,Login_Activity.class);
             startActivity(intent);
             finish();
+        }
+        if(v.getId()==R.id.gt_bt){
+            Intent intent = new Intent(HomeActivity.this,GlucoseTrackerActivity.class);
+            startActivity(intent);
+        }
+        if(v.getId()==R.id.log_bt){
+            Intent intent = new Intent(HomeActivity.this,LogEntry_Activity.class);
+            startActivity(intent);
+
         }
     }
 }

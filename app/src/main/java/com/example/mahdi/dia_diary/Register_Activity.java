@@ -128,7 +128,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         mAuth.getCurrentUser().delete();
-                                        Toast.makeText(Register_Activity.this,"Registration Failed. Could not connect to database. Try again later .",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register_Activity.this,"Registration Failed. Could not connect to database. Try again later ."+e.getMessage(),Toast.LENGTH_LONG).show();
 
                                     }
                                 });

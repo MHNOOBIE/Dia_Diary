@@ -17,7 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register_Activity" />
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".LogEntry_Activity" />
+        <activity android:name=".GlucoseTrackerActivity"></activity>
     </application>
 
 </manifest>
