@@ -34,7 +34,7 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
                 for (DocumentSnapshot dc: queryDocumentSnapshots){
                     LogEntry log = dc.toObject(LogEntry.class);
                     date_text.setText(log.getTime().toString());
-                    gluc_text.setText(Float.toString(log.getGluc_value()));
+                    gluc_text.setText(log.getGluc_value());
                 }
             }
         });

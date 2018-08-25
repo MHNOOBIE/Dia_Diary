@@ -21,29 +21,34 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="32dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="308dp"
+            android:layout_marginTop="232dp"
             android:text="Enter glucose reading in mmol/L"
             android:textColor="#111"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/numberPicker"
+            app:layout_constraintEnd_toStartOf="@+id/gluc_et"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <NumberPicker
-            android:theme="@style/AppTheme.Picker"
-            android:id="@+id/numberPicker"
-            android:layout_width="42dp"
-            android:layout_height="99dp"
+        <EditText
+            android:textColorHint="#999"
+            android:textColor="#111"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="#fff"
+            android:id="@+id/gluc_et"
+            android:hint="0-60"
+            android:inputType="numberDecimal"
+            android:layout_width="62dp"
+            android:layout_height="22dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="116dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="116dp"
-            android:layout_marginTop="272dp"
-            android:solidColor="#512DA8"
+            android:layout_marginTop="232dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.145"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,6 +136,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline4" />
 
         <ProgressBar
+            android:visibility="invisible"
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
