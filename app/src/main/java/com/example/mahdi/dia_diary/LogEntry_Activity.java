@@ -48,8 +48,7 @@ public class LogEntry_Activity extends AppCompatActivity implements View.OnClick
            if(Float.parseFloat(gluc_value)>60){
                Toast.makeText(this, "Value must be between 0 - 60 .", Toast.LENGTH_SHORT).show();
                submit_bt.setVisibility(View.VISIBLE);
-               progressBar.setVisibility(View.INVISIBLE);
-               return;
+               progressBar.setVisibility(View.INVISIBLE);               return;
            }
            LogEntry log = new LogEntry(gluc_value, Calendar.getInstance().getTime());
             FirebaseFirestore db = FirebaseFirestore.getInstance();

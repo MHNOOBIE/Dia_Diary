@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             finish();
         }
         if(v.getId()==R.id.gt_bt){
-            Intent intent = new Intent(HomeActivity.this,GlucoseTrackerActivity.class);
+            Intent intent = new Intent(HomeActivity.this,GlucoseModuleActivity.class);
             startActivity(intent);
         }
         if(v.getId()==R.id.log_bt){

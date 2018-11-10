@@ -47,7 +47,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:background="#651FFF"
-        android:text="Glucose\nTracker"
+        android:text="Glucose\nModule"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -62,7 +62,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:background="#304FFE"
-        android:text="Weekly progress"
+        android:text="Insulin\nModule"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -149,7 +149,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:background="#7C4DFF"
-        android:text="Log Entry"
+        android:text="Upload Report"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gt_bt" />
