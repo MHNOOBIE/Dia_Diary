@@ -18,10 +18,9 @@
         </activity>
         <activity android:name=".Register_Activity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".LogEntry_Activity" />
         <activity android:name=".GlucoseTrackerActivity" />
-        <activity android:name=".GlucoseModuleActivity" />
-        <activity android:name=".Input_Acitivty"></activity>
+        <activity android:name=".LogEntry_Activity" />
+        <activity android:name=".GlucoseInput_Acitivty"></activity>
     </application>
 
 </manifest>

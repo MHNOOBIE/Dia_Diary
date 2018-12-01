@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ECEFF1"
-    tools:context=".GlucoseModuleActivity">
+    tools:context=".LogEntry_Activity">
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/in_bt"
+        android:id="@+id/glucoseInput_bt"
         android:layout_width="184dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Glucose Module"
+        android:text="Log Entry"
         android:textAllCaps="true"
         android:textColor="#651FFF"
         android:textSize="25sp"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/track_bt"
+        android:id="@+id/insulinInput_bt"
         android:layout_width="184dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"
@@ -59,12 +59,12 @@
         android:layout_marginRight="8dp"
         android:background="#2196F3"
         android:padding="14dp"
-        android:text="Glucose Tracker"
+        android:text="Insulin Input"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/in_bt" />
+        app:layout_constraintTop_toBottomOf="@+id/glucoseInput_bt" />
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

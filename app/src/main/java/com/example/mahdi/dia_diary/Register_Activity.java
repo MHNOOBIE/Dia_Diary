@@ -32,6 +32,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
     private Spinner spinner;
     private FirebaseAuth mAuth;
     private ProgressBar pbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
         spinner = findViewById(R.id.c_spinner);
         pbar = findViewById(R.id.pbar);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.countries_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.countries_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -69,35 +70,35 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.register_bt){
+        if (v.getId() == R.id.register_bt) {
             String Email = email_id.getText().toString();
             String Password = password.getText().toString();
             String CPassword = cpassword.getText().toString();
             final String Username = username.getText().toString();
 
 
-            if(Username.isEmpty()){
-                Toast.makeText(this,"Enter your Username .",Toast.LENGTH_SHORT).show();
+            if (Username.isEmpty()) {
+                Toast.makeText(this, "Enter your Username .", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(Password.isEmpty()){
-                Toast.makeText(this,"Enter your Password .",Toast.LENGTH_SHORT).show();
+            if (Password.isEmpty()) {
+                Toast.makeText(this, "Enter your Password .", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(!CPassword.equals(Password)){
-                Toast.makeText(this,"Passwords do not match .",Toast.LENGTH_SHORT).show();
+            if (!CPassword.equals(Password)) {
+                Toast.makeText(this, "Passwords do not match .", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(Email.isEmpty()){
-                Toast.makeText(this,"Enter your Email .",Toast.LENGTH_SHORT).show();
+            if (Email.isEmpty()) {
+                Toast.makeText(this, "Enter your Email .", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if(country.equals("Select Your Country")){
-                Toast.makeText(this,"Select your country .",Toast.LENGTH_SHORT).show();
+            if (country.equals("Select Your Country")) {
+                Toast.makeText(this, "Select your country .", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -110,17 +111,17 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
 
-                                Users user = new Users(Username,country);
+                                Users user = new Users(Username, country);
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                                 db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(Register_Activity.this,"Registration Successful .",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register_Activity.this, "Registration Successful .", Toast.LENGTH_LONG).show();
                                         //FirebaseUser user = mAuth.getCurrentUser();
                                         //updateUI(user);
 
-                                        Intent intent = new Intent(Register_Activity.this,Login_Activity.class);
+                                        Intent intent = new Intent(Register_Activity.this, Login_Activity.class);
                                         startActivity(intent);
                                         finish();
                                     }
@@ -128,15 +129,14 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         mAuth.getCurrentUser().delete();
-                                        Toast.makeText(Register_Activity.this,"Registration Failed. Could not connect to database. Try again later ."+e.getMessage(),Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register_Activity.this, "Registration Failed. Could not connect to database. Try again later ." + e.getMessage(), Toast.LENGTH_LONG).show();
 
                                     }
                                 });
 
 
-
                             } else {
-                                if(task.getException()!=null)
+                                if (task.getException() != null)
                                     Toast.makeText(Register_Activity.this, "Registration Failed ." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                                 pbar.setVisibility(View.GONE);
