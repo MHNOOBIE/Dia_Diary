@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if(v.getId() == R.id.diaTracker_bt) {
-            Intent intent = new Intent(HomeActivity.this, GlucoseTrackerActivity.class);
+            Intent intent = new Intent(HomeActivity.this, DiaTracker_Activity.class);
             startActivity(intent);
 
         }

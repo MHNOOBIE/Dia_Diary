@@ -20,7 +20,10 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".GlucoseTrackerActivity" />
         <activity android:name=".LogEntry_Activity" />
-        <activity android:name=".GlucoseInput_Acitivty"></activity>
+        <activity android:name=".GlucoseInput_Acitivty" />
+        <activity android:name=".InsulinInput_Activity" />
+        <activity android:name=".DiaTracker_Activity" />
+        <activity android:name=".InsulinTracker_Activity"></activity>
     </application>
 
 </manifest>

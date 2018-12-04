@@ -13,8 +13,8 @@ public class LogEntry_Activity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_entry);
-        glucoseInput_bt = findViewById(R.id.glucoseInput_bt);
-        insulinInput_bt = findViewById(R.id.insulinInput_bt);
+        glucoseInput_bt = findViewById(R.id.glucoseTracker_bt);
+        insulinInput_bt = findViewById(R.id.insulinTracker_bt);
         glucoseInput_bt.setOnClickListener(this);
         insulinInput_bt.setOnClickListener(this);
     }
@@ -26,7 +26,8 @@ public class LogEntry_Activity extends AppCompatActivity implements View.OnClick
             startActivity(intent);
         }
         if (v.getId() == insulinInput_bt.getId()) {
-
+            Intent intent = new Intent(LogEntry_Activity.this, InsulinInput_Activity.class);
+            startActivity(intent);
         }
     }
 
