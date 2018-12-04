@@ -15,6 +15,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button logEntry_bt;
     private Button uploadReport_bt;
     private Button diaTracker_bt;
+    private Button showReports_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         logEntry_bt = findViewById(R.id.logEntry_bt);
         uploadReport_bt = findViewById(R.id.uploadReport_bt);
         diaTracker_bt = findViewById(R.id.diaTracker_bt);
+        showReports_bt = findViewById(R.id.showReports_bt);
+
+        showReports_bt.setOnClickListener(this);
 
         logout_bt.setOnClickListener(this);
         logEntry_bt.setOnClickListener(this);
@@ -42,17 +46,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
             finish();
         }
-        if (v.getId() == R.id.logEntry_bt) {
+        else if (v.getId() == R.id.logEntry_bt) {
             Intent intent = new Intent(HomeActivity.this, LogEntry_Activity.class);
             startActivity(intent);
         }
-        if (v.getId() == R.id.uploadReport_bt) {
-            Intent intent = new Intent(HomeActivity.this, LogEntry_Activity.class);
+        else if (v.getId() == R.id.uploadReport_bt) {
+            Intent intent = new Intent(HomeActivity.this, UploadReport_Activity.class);
             startActivity(intent);
 
         }
-        if(v.getId() == R.id.diaTracker_bt) {
+        else if(v.getId() == R.id.diaTracker_bt) {
             Intent intent = new Intent(HomeActivity.this, DiaTracker_Activity.class);
+            startActivity(intent);
+
+        }
+
+        else if(v.getId() == R.id.showReports_bt) {
+            Intent intent = new Intent(HomeActivity.this, ShowReports_Activity.class);
             startActivity(intent);
 
         }

@@ -85,6 +85,7 @@ public class InsulinTracker_Activity extends AppCompatActivity {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                 List<Entry> lineEntry = new ArrayList<Entry>();
+                float max =0;
 
                 for (DocumentSnapshot dc : queryDocumentSnapshots) {
 
@@ -113,6 +114,7 @@ public class InsulinTracker_Activity extends AppCompatActivity {
 
                     Entry temp = new Entry(insulin.time.getTime(), Float.parseFloat(insulin.insulin_value)); // 0 == quarter 1
                     lineEntry.add(temp);
+                    max = Float.parseFloat(insulin.insulin_value);
 
                 }
 
@@ -121,7 +123,7 @@ public class InsulinTracker_Activity extends AppCompatActivity {
                     YAxis leftAxis = lineChart.getAxisLeft();
                     leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
                     leftAxis.setAxisMinimum(0f);
-                    leftAxis.setAxisMaximum(60f);
+                    leftAxis.setAxisMaximum(max+10f);
 
 
                     YAxis rightAxis = lineChart.getAxisRight();

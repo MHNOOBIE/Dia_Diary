@@ -8,7 +8,8 @@ import android.widget.Button;
 
 public class DiaTracker_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button glucoseTracker_bt,insulinTracker_bt,mixedTracker_bt;
+    private Button glucoseTracker_bt, insulinTracker_bt, mixedTracker_bt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +28,14 @@ public class DiaTracker_Activity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==glucoseTracker_bt.getId()){
-            Intent intent = new Intent(DiaTracker_Activity.this,GlucoseTrackerActivity.class);
+        if (v.getId() == glucoseTracker_bt.getId()) {
+            Intent intent = new Intent(DiaTracker_Activity.this, GlucoseTrackerActivity.class);
             startActivity(intent);
-        }
-
-        else if(v.getId()==insulinTracker_bt.getId()){
-            Intent intent = new Intent(DiaTracker_Activity.this,InsulinTracker_Activity.class);
+        } else if (v.getId() == insulinTracker_bt.getId()) {
+            Intent intent = new Intent(DiaTracker_Activity.this, InsulinTracker_Activity.class);
+            startActivity(intent);
+        } else if (v.getId() == mixedTracker_bt.getId()) {
+            Intent intent = new Intent(DiaTracker_Activity.this, MixedTracker_Activity.class);
             startActivity(intent);
         }
     }

@@ -86,6 +86,7 @@
             android:padding="10dp"
             android:text="Select Time"
             android:textSize="20sp"
+            android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +105,7 @@
             android:padding="10dp"
             android:text="Select Date"
             android:textSize="20sp"
+            android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/time_bt" />
@@ -119,6 +121,7 @@
             android:layout_marginRight="8dp"
             android:background="@color/colorPrimary"
             android:text="Submit"
+            android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_bt" />

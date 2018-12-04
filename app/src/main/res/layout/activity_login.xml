@@ -52,6 +52,7 @@
             android:id="@+id/login_bt"
             android:layout_width="106.5dp"
             android:layout_height="35dp"
+            android:textColor="#fff"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25.5dp"
             android:background="@drawable/login_bt"
@@ -71,6 +72,7 @@
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25.5dp"
+            android:textColor="#fff"
             android:background="@drawable/register_bt"
             android:text="Register" />
 
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25.5dp"
+            android:textColor="#fff"
             android:text="Tap here to login as doctor"
             android:textSize="20sp" />
 

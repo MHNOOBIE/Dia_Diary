@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.CombinedData;
@@ -102,6 +103,7 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
                 List<Entry> randomEntry = new ArrayList<>();
                 List<Entry> fastingEntry = new ArrayList<>();
                 List<Entry> aftermealEntry = new ArrayList<>();
+                float max =0;
 
                 for (DocumentSnapshot dc : queryDocumentSnapshots) {
 
@@ -145,15 +147,34 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
                     }
                     lineEntry.add(temp);
 
+                    max = Float.parseFloat(glucose.gluc_value);
+
                 }
 
                 if(lineEntry.size()>0) {
 
+
+
+                    LimitLine lower_limit = new LimitLine(3.0f,"Too low");
+
+                    LimitLine upper_Limit = new LimitLine(8.9f,"Too high");
+
+
+                    upper_Limit.setLineColor(Color.RED);
+                    upper_Limit.enableDashedLine(10f,10f,0f);
+                    upper_Limit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
+
+                    lower_limit.setLineColor(Color.parseColor("#BD3853"));
+                    lower_limit.enableDashedLine(10f,10f,0f);
+                    lower_limit.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
+
                     YAxis leftAxis = lineChart.getAxisLeft();
                     leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
                     leftAxis.setAxisMinimum(0f);
-                    leftAxis.setAxisMaximum(60f);
+                    leftAxis.setAxisMaximum(max+10f);
 
+                    leftAxis.addLimitLine(upper_Limit);
+                    leftAxis.addLimitLine(lower_limit);
 
                     YAxis rightAxis = lineChart.getAxisRight();
                     rightAxis.setEnabled(false);
@@ -199,13 +220,15 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
                     lineChart.setData(lineData);
                     lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
                     lineChart.getDescription().setEnabled(false);
-                    lineChart.invalidate();
 
 
                     leftAxis = lineChart2.getAxisLeft();
                     leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
                     leftAxis.setAxisMinimum(0f);
-                    leftAxis.setAxisMaximum(60f);
+                    leftAxis.setAxisMaximum(max+10f);
+
+                    leftAxis.addLimitLine(upper_Limit);
+                    leftAxis.addLimitLine(lower_limit);
 
 
                     rightAxis = lineChart2.getAxisRight();
@@ -223,8 +246,10 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
                     lineChart2.setData(lineData);
                     lineChart2.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
                     lineChart2.getDescription().setEnabled(false);
+
                     lineChart.invalidate();
                     lineChart2.invalidate();
+
                 }
 
 
