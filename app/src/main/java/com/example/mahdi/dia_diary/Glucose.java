@@ -7,6 +7,19 @@ public class Glucose {
     public Date time;
     public String type;
 
+
+    public String getGluc_value() {
+        return gluc_value;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     public Glucose() {
     }
 

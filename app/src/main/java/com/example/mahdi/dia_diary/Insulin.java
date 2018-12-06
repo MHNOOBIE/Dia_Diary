@@ -6,6 +6,14 @@ public class Insulin {
     public String insulin_value;
     public Date time;
 
+    public String getInsulin_value() {
+        return insulin_value;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
     public Insulin() {
     }
 

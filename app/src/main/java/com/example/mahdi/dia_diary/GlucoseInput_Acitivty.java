@@ -35,7 +35,7 @@ public class GlucoseInput_Acitivty extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_glucose_input__acitivty);
+        setContentView(R.layout.activity_glucose_input);
         submit_bt = findViewById(R.id.submit_bt);
         glucose_et = findViewById(R.id.insulin_et);
         time_bt = findViewById(R.id.time_bt);
@@ -92,7 +92,7 @@ public class GlucoseInput_Acitivty extends AppCompatActivity implements View.OnC
                 public void onSuccess(DocumentReference documentReference) {
                     Toast.makeText(GlucoseInput_Acitivty.this, "Log Succesfully recorded.", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(GlucoseInput_Acitivty.this, HomeActivity.class);
+                    Intent intent = new Intent(GlucoseInput_Acitivty.this, PatientModule_Activity.class);
                     startActivity(intent);
                     finish();
                 }

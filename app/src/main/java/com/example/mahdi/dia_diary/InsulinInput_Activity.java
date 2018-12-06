@@ -79,7 +79,7 @@ public class InsulinInput_Activity extends AppCompatActivity implements View.OnC
                 public void onSuccess(DocumentReference documentReference) {
                     Toast.makeText(InsulinInput_Activity.this, "Log Succesfully recorded.", Toast.LENGTH_LONG).show();
 
-                    Intent intent = new Intent(InsulinInput_Activity.this, HomeActivity.class);
+                    Intent intent = new Intent(InsulinInput_Activity.this, PatientModule_Activity.class);
                     startActivity(intent);
                     finish();
                 }

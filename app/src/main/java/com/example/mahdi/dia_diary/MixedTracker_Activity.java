@@ -3,10 +3,6 @@ package com.example.mahdi.dia_diary;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -35,7 +31,6 @@ import javax.annotation.Nullable;
 
 public class MixedTracker_Activity extends AppCompatActivity {
 
-    private FirebaseFirestore db;
     private LineChart lineChart;
     float max = 0;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
@@ -77,7 +72,7 @@ public class MixedTracker_Activity extends AppCompatActivity {
 
         lineChart = findViewById(R.id.chart);
 
-        db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
         db.collection("InsulinEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Insulin").orderBy("time").addSnapshotListener(new EventListener<QuerySnapshot>() {

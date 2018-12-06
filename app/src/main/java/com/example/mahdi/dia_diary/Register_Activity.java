@@ -29,7 +29,6 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
     private EditText cpassword;
     private EditText email_id;
     private Button register_bt;
-    private Spinner spinner;
     private FirebaseAuth mAuth;
     private ProgressBar pbar;
 
@@ -47,7 +46,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
         register_bt = findViewById(R.id.register_bt);
 
         register_bt.setOnClickListener(this);
-        spinner = findViewById(R.id.c_spinner);
+        Spinner spinner = findViewById(R.id.c_spinner);
         pbar = findViewById(R.id.pbar);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.countries_array, android.R.layout.simple_spinner_item);

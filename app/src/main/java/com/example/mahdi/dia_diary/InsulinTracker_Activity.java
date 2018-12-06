@@ -16,7 +16,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -60,7 +59,6 @@ public class InsulinTracker_Activity extends AppCompatActivity {
     private TextView time_tv, insulin_tv;
     private TableLayout tableLayout;
     private TableRow tableRow;
-    private FirebaseFirestore db;
     private LineChart lineChart;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
 
@@ -78,7 +76,7 @@ public class InsulinTracker_Activity extends AppCompatActivity {
         tableLayout.setColumnStretchable(1, true);
 
 
-        db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
         db.collection("InsulinEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Insulin").orderBy("time").addSnapshotListener(new EventListener<QuerySnapshot>() {

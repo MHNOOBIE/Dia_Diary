@@ -14,14 +14,15 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Login_Activity">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Register_Activity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".GlucoseTrackerActivity" />
+        <activity android:name=".PatientModule_Activity" />
+        <activity android:name=".GlucoseTracker_Activity" />
         <activity android:name=".LogEntry_Activity" />
         <activity android:name=".GlucoseInput_Acitivty" />
         <activity android:name=".InsulinInput_Activity" />
@@ -29,7 +30,10 @@
         <activity android:name=".InsulinTracker_Activity" />
         <activity android:name=".MixedTracker_Activity" />
         <activity android:name=".UploadReport_Activity" />
-        <activity android:name=".ShowReports_Activity"></activity>
+        <activity android:name=".ShowReports_Activity" />
+        <activity android:name=".PatientRoot_Activity" />
+        <activity android:name=".InteractWithDoctor_Activity" />
+        <activity android:name=".DoctorDetails_Activity"></activity>
     </application>
 
 </manifest>

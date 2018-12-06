@@ -13,16 +13,12 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.data.ScatterData;
-import com.github.mikephil.charting.data.ScatterDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
@@ -44,7 +40,7 @@ import java.util.Locale;
 
 import javax.annotation.Nullable;
 
-public class GlucoseTrackerActivity extends AppCompatActivity {
+public class GlucoseTracker_Activity extends AppCompatActivity {
 
     public class MyXAxisValueFormatter implements IAxisValueFormatter {
 
@@ -72,7 +68,6 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
     private TextView time_tv, type_tv, glucose_tv;
     private TableLayout tableLayout;
     private TableRow tableRow;
-    private FirebaseFirestore db;
     private LineChart lineChart;
     private LineChart lineChart2;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
@@ -93,7 +88,7 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
         tableLayout.setColumnStretchable(2, true);
 
 
-        db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
         db.collection("GlucoseEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Glucose").orderBy("time").addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -109,11 +104,11 @@ public class GlucoseTrackerActivity extends AppCompatActivity {
 
 
                     Glucose glucose = dc.toObject(Glucose.class);
-                    tableRow = new TableRow(GlucoseTrackerActivity.this);
+                    tableRow = new TableRow(GlucoseTracker_Activity.this);
 
-                    time_tv = new TextView(GlucoseTrackerActivity.this);
-                    type_tv = new TextView(GlucoseTrackerActivity.this);
-                    glucose_tv = new TextView(GlucoseTrackerActivity.this);
+                    time_tv = new TextView(GlucoseTracker_Activity.this);
+                    type_tv = new TextView(GlucoseTracker_Activity.this);
+                    glucose_tv = new TextView(GlucoseTracker_Activity.this);
 
 
                     String date_n = new SimpleDateFormat("yyyy-MM-dd hh:mm a", Locale.getDefault()).format(glucose.time);

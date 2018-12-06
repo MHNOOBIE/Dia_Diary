@@ -17,18 +17,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
-import java.util.HashMap;
-
 public class Login_Activity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private Button login_bt;
-    private Button register_bt;
     private EditText email_id;
     private EditText password;
     private ProgressBar pbar;
-    private TextView loginDoctor_tv;
 
 
     @Override
@@ -42,7 +37,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
 
             }
             Toast.makeText(this, "User Logged in", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+            Intent intent = new Intent(Login_Activity.this, PatientRoot_Activity.class);
             startActivity(intent);
             finish();
         }
@@ -57,11 +52,11 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_login);
 
         login_bt = findViewById(R.id.login_bt);
-        register_bt = findViewById(R.id.register_bt);
+        Button register_bt = findViewById(R.id.register_bt);
         email_id = findViewById(R.id.email_id);
         password = findViewById(R.id.password);
         pbar = findViewById(R.id.pbar);
-        loginDoctor_tv = findViewById(R.id.loginDoctor_tv);
+        TextView loginDoctor_tv = findViewById(R.id.loginDoctor_tv);
 
         loginDoctor_tv.setOnClickListener(this);
         login_bt.setOnClickListener(this);
@@ -91,7 +86,6 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(this, "Please Login as doctor .", Toast.LENGTH_SHORT).show();
                 return;
             }
-            ;
 
 
             if (Email.isEmpty()) {
@@ -113,7 +107,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(Login_Activity.this, "Login Successful", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Login_Activity.this, HomeActivity.class);
+                                Intent intent = new Intent(Login_Activity.this, PatientRoot_Activity.class);
                                 startActivity(intent);
                                 finish();
 

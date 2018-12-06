@@ -29,7 +29,7 @@ public class DiaTracker_Activity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
 
         if (v.getId() == glucoseTracker_bt.getId()) {
-            Intent intent = new Intent(DiaTracker_Activity.this, GlucoseTrackerActivity.class);
+            Intent intent = new Intent(DiaTracker_Activity.this, GlucoseTracker_Activity.class);
             startActivity(intent);
         } else if (v.getId() == insulinTracker_bt.getId()) {
             Intent intent = new Intent(DiaTracker_Activity.this, InsulinTracker_Activity.class);
