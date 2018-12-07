@@ -86,11 +86,11 @@ public class PatientList_Activity extends AppCompatActivity {
 
                                     pt_tv.setText("Tap on a Patient");
 
-                           /*         mAdapter.setOnItemClickListener(new PatientAdapter.OnitemClickListener() {
+                                   mAdapter.setOnItemClickListener(new PatientAdapter.OnitemClickListener() {
                                         @Override
                                         public void onItemClick(int position) {
                                             Users temp = patientArrayList.get(position);
-                                            Intent intent = new Intent(PatientList_Activity.this,PatientDetails_Activity.class);
+                                            Intent intent = new Intent(PatientList_Activity.this,SupervisedPatient_Activity.class);
                                             intent.putExtra("Name",temp.name);
                                             intent.putExtra("ID",patient_id.get(position));
                                             intent.putExtra("Email",temp.email);
@@ -98,7 +98,7 @@ public class PatientList_Activity extends AppCompatActivity {
                                             startActivity(intent);
 
                                         }
-                                    });*/
+                                    });
                                 } else {
                                     Toast.makeText(PatientList_Activity.this,"Oops! Something went wrong. Check your internet connection.",Toast.LENGTH_LONG).show();
                                 }

@@ -38,7 +38,11 @@
         <activity android:name=".DoctorLogin_Activity" />
         <activity android:name=".SuperVisionRequests_Activity" />
         <activity android:name=".PatientDetails_Activity" />
-        <activity android:name=".PatientList_Activity"></activity>
+        <activity android:name=".PatientList_Activity" />
+        <activity android:name=".SupervisedPatient_Activity" />
+        <activity android:name=".SupervisedGlucose_Activity" />
+        <activity android:name=".SupervisedInsulin_Activity" />
+        <activity android:name=".SupervisedMixed_Activity"></activity>
     </application>
 
 </manifest>
