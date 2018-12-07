@@ -24,7 +24,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
     private EditText email_id;
     private EditText password;
     private ProgressBar pbar;
-
+    private TextView loginDoctor_tv;
 
     @Override
     public void onStart() {
@@ -34,12 +34,17 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         //updateUI(currentUser);
         if (currentUser != null) {
             if (currentUser.getEmail().equals("doctor1@gmail.com") || currentUser.getEmail().equals("doctor2@gmail.com")) {
-
+                Toast.makeText(this, "Doctor Logged in", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Login_Activity.this, DoctorRoot_Activity.class);
+                startActivity(intent);
+                finish();
             }
-            Toast.makeText(this, "User Logged in", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Login_Activity.this, PatientRoot_Activity.class);
-            startActivity(intent);
-            finish();
+            else {
+                Toast.makeText(this, "User Logged in", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Login_Activity.this, PatientRoot_Activity.class);
+                startActivity(intent);
+                finish();
+            }
         }
       /*  else {
             Toast.makeText(this,"User Not Logged in",Toast.LENGTH_LONG).show();
@@ -56,7 +61,7 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         email_id = findViewById(R.id.email_id);
         password = findViewById(R.id.password);
         pbar = findViewById(R.id.pbar);
-        TextView loginDoctor_tv = findViewById(R.id.loginDoctor_tv);
+        loginDoctor_tv = findViewById(R.id.loginDoctor_tv);
 
         loginDoctor_tv.setOnClickListener(this);
         login_bt.setOnClickListener(this);
@@ -75,7 +80,9 @@ public class Login_Activity extends AppCompatActivity implements View.OnClickLis
         }
 
         if (v.getId() == R.id.loginDoctor_tv) {
-
+            Intent intent = new Intent(Login_Activity.this, DoctorLogin_Activity.class);
+            startActivity(intent);
+            finish();
         }
 
         if (v.getId() == R.id.login_bt) {

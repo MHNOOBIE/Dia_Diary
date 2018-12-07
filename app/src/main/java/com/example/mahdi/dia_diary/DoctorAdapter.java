@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,8 +29,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
 
         public DoctorViewHolder(View itemView, final OnitemClickListener listener) {
             super(itemView);
-            name = itemView.findViewById(R.id.doctorname_tv);
-            email = itemView.findViewById(R.id.doctoremail_tv);
+            name = itemView.findViewById(R.id.name_tv);
+            email = itemView.findViewById(R.id.email_tv);
             hospital = itemView.findViewById(R.id.hospital_tv);
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -70,7 +70,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.register_bt) {
-            String Email = email_id.getText().toString();
+            final String Email = email_id.getText().toString();
             String Password = password.getText().toString();
             String CPassword = cpassword.getText().toString();
             final String Username = username.getText().toString();
@@ -110,7 +110,7 @@ public class Register_Activity extends AppCompatActivity implements AdapterView.
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
 
-                                Users user = new Users(Username, country);
+                                Users user = new Users(Username, country,Email);
                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                                 db.collection("Users").document(mAuth.getCurrentUser().getUid()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {

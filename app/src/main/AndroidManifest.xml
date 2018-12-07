@@ -33,7 +33,12 @@
         <activity android:name=".ShowReports_Activity" />
         <activity android:name=".PatientRoot_Activity" />
         <activity android:name=".InteractWithDoctor_Activity" />
-        <activity android:name=".DoctorDetails_Activity"></activity>
+        <activity android:name=".DoctorDetails_Activity" />
+        <activity android:name=".DoctorRoot_Activity" />
+        <activity android:name=".DoctorLogin_Activity" />
+        <activity android:name=".SuperVisionRequests_Activity" />
+        <activity android:name=".PatientDetails_Activity" />
+        <activity android:name=".PatientList_Activity"></activity>
     </application>
 
 </manifest>

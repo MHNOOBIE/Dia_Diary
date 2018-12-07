@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ECEFF1">
+    android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".PatientRoot_Activity">
+        android:layout_height="match_parent"
+        tools:context=".DoctorRoot_Activity">
+
 
         <Button
             android:id="@+id/supervisionrequests_bt"
@@ -24,7 +22,7 @@
             android:layout_marginRight="8dp"
             android:background="#7c4dff"
             android:padding="10dp"
-            android:text="Interact with Doctor"
+            android:text="Supervision Requests"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +39,7 @@
             android:layout_marginRight="8dp"
             android:background="#651fff"
             android:padding="10dp"
-            android:text="Patient's Module"
+            android:text="Patient List"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -95,5 +93,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/supervisionrequests_bt" />
+
+
+
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

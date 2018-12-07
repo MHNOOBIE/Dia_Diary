@@ -20,8 +20,8 @@ public class PatientRoot_Activity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_root);
 
-        pm_bt = findViewById(R.id.pm_bt);
-        doctor_bt = findViewById(R.id.doctor_bt);
+        pm_bt = findViewById(R.id.patientlist_bt);
+        doctor_bt = findViewById(R.id.supervisionrequests_bt);
         Button logout_bt = findViewById(R.id.logout_bt);
 
         TextView greetings_tv = findViewById(R.id.greetings_tv);
