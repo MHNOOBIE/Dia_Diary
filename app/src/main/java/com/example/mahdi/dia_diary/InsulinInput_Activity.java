@@ -3,7 +3,10 @@ package com.example.mahdi.dia_diary;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,6 +60,15 @@ public class InsulinInput_Activity extends AppCompatActivity implements View.OnC
         time_bt.setOnClickListener(this);
     }
 
+
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     @Override
     public void onClick(View v) {
         if (v.getId() == submit_bt.getId()) {
@@ -69,11 +81,23 @@ public class InsulinInput_Activity extends AppCompatActivity implements View.OnC
                 Toast.makeText(this, "Value must be between 0 - 60 .", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Date date = new Date(y-1900, m, d, hour, min);
+            Date date = new Date(y - 1900, m, d, hour, min);
             Insulin insulin = new Insulin(insulin_value, date);
             submit_bt.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.VISIBLE);
             FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+            if (!isNetworkAvailable()) {
+                db.collection("InsulinEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Insulin").add(insulin);
+                Toast.makeText(InsulinInput_Activity.this, "Log Succesfully recorded.", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(InsulinInput_Activity.this, PatientModule_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            else{
             db.collection("InsulinEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Insulin").add(insulin).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
@@ -94,7 +118,8 @@ public class InsulinInput_Activity extends AppCompatActivity implements View.OnC
             });
 
         }
-        if (v.getId() == time_bt.getId()) {
+        }
+        else if (v.getId() == time_bt.getId()) {
             TimePickerDialog timePickerDialog;
             timePickerDialog = new TimePickerDialog(InsulinInput_Activity.this, new TimePickerDialog.OnTimeSetListener() {
                 @Override
@@ -107,7 +132,7 @@ public class InsulinInput_Activity extends AppCompatActivity implements View.OnC
             timePickerDialog.show();
         }
 
-        if (v.getId() == date_bt.getId()) {
+        else if (v.getId() == date_bt.getId()) {
             DatePickerDialog datePickerDialog;
             datePickerDialog = new DatePickerDialog(InsulinInput_Activity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override

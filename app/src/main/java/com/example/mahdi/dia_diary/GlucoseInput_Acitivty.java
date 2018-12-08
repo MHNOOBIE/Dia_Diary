@@ -2,7 +2,10 @@ package com.example.mahdi.dia_diary;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -66,6 +69,14 @@ public class GlucoseInput_Acitivty extends AppCompatActivity implements View.OnC
         time_bt.setOnClickListener(this);
     }
 
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     @Override
     public void onClick(View v) {
         if (v.getId() == submit_bt.getId()) {
@@ -82,11 +93,24 @@ public class GlucoseInput_Acitivty extends AppCompatActivity implements View.OnC
                 Toast.makeText(this, "Value must be between 0 - 60 .", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Date date = new Date(y-1900, m, d, hour, min);
+            Date date = new Date(y - 1900, m, d, hour, min);
             Glucose glucose = new Glucose(gluc_value, date, type);
             submit_bt.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.VISIBLE);
             FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+            if (!isNetworkAvailable()) {
+                db.collection("GlucoseEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Glucose").add(glucose);
+                Toast.makeText(GlucoseInput_Acitivty.this, "Log Succesfully recorded.", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(GlucoseInput_Acitivty.this, PatientModule_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+
+
+            else{
             db.collection("GlucoseEntry").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("Glucose").add(glucose).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
@@ -106,6 +130,7 @@ public class GlucoseInput_Acitivty extends AppCompatActivity implements View.OnC
                 }
             });
 
+        }
         }
         if (v.getId() == time_bt.getId()) {
             TimePickerDialog timePickerDialog;
