@@ -1,6 +1,9 @@
 package com.example.mahdi.dia_diary;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +26,15 @@ public class InteractWithDoctor_Activity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     FirebaseFirestore db;
 
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && ((NetworkInfo) activeNetworkInfo).isConnected();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,49 +43,53 @@ public class InteractWithDoctor_Activity extends AppCompatActivity {
         final ArrayList<Doctor> doctorArrayList = new ArrayList<>();
 
         db = FirebaseFirestore.getInstance();
+        if(isNetworkAvailable()) {
+            db.collection("Doctors").orderBy("name").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
 
-        db.collection("Doctors").orderBy("name").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-
-                for (DocumentSnapshot dc : queryDocumentSnapshots) {
-
-
-                    Doctor doctor = dc.toObject(Doctor.class);
+                    for (DocumentSnapshot dc : queryDocumentSnapshots) {
 
 
-                    doctorArrayList.add(doctor);
+                        Doctor doctor = dc.toObject(Doctor.class);
 
 
+                        doctorArrayList.add(doctor);
+
+
+                    }
+                    if (doctorArrayList.size() > 0) {
+                        mRecyclerView = findViewById(R.id.recyclerView);
+                        mRecyclerView.setHasFixedSize(true);
+                        mLayoutManager = new LinearLayoutManager(InteractWithDoctor_Activity.this);
+                        mAdapter = new DoctorAdapter(doctorArrayList);
+
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        mRecyclerView.setAdapter(mAdapter);
+
+                        mAdapter.setOnItemClickListener(new DoctorAdapter.OnitemClickListener() {
+                            @Override
+                            public void onItemClick(int position) {
+                                Doctor temp = doctorArrayList.get(position);
+                                Intent intent = new Intent(InteractWithDoctor_Activity.this, DoctorDetails_Activity.class);
+                                intent.putExtra("Name", temp.name);
+                                intent.putExtra("ID", temp.doctor_id);
+                                intent.putExtra("Email", temp.email);
+                                intent.putExtra("Hospital", temp.hospital);
+                                startActivity(intent);
+
+                            }
+                        });
+
+                    } else {
+                        Toast.makeText(InteractWithDoctor_Activity.this, "Oops! Something went wrong. Check your internet connection.", Toast.LENGTH_LONG).show();
+                    }
                 }
-                if (doctorArrayList.size() > 0) {
-                    mRecyclerView = findViewById(R.id.recyclerView);
-                    mRecyclerView.setHasFixedSize(true);
-                    mLayoutManager = new LinearLayoutManager(InteractWithDoctor_Activity.this);
-                    mAdapter = new DoctorAdapter(doctorArrayList);
+            });
 
-                    mRecyclerView.setLayoutManager(mLayoutManager);
-                    mRecyclerView.setAdapter(mAdapter);
-
-                    mAdapter.setOnItemClickListener(new DoctorAdapter.OnitemClickListener() {
-                        @Override
-                        public void onItemClick(int position) {
-                            Doctor temp = doctorArrayList.get(position);
-                            Intent intent = new Intent(InteractWithDoctor_Activity.this,DoctorDetails_Activity.class);
-                            intent.putExtra("Name",temp.name);
-                            intent.putExtra("ID",temp.doctor_id);
-                            intent.putExtra("Email",temp.email);
-                            intent.putExtra("Hospital",temp.hospital);
-                            startActivity(intent);
-
-                        }
-                    });
-
-                } else {
-                    Toast.makeText(InteractWithDoctor_Activity.this,"Oops! Something went wrong. Check your internet connection.",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-
+        }
+        else {
+            Toast.makeText(InteractWithDoctor_Activity.this, "Oops! Something went wrong. Check your internet connection.", Toast.LENGTH_LONG).show();
+        }
     }
 }

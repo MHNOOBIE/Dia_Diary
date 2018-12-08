@@ -25,6 +25,7 @@ public class DoctorDetails_Activity extends AppCompatActivity implements View.On
     private Button request_bt;
     private TextView name_tv, email_tv, hospital_tv;
     private String doctor_id, pat_id;
+    int supervised = 0;
 
     FirebaseFirestore db;
 
@@ -56,19 +57,33 @@ public class DoctorDetails_Activity extends AppCompatActivity implements View.On
 
         request_bt.setText("Checking State...");
 
-        db.collection("Requests").document(doctor_id).collection("Pending").document(pat_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("Doctors").document(doctor_id).collection("Supervising").document(pat_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.getResult().exists()){
-                    request_bt.setText("Waiting for doctor's response...");
-                }
+                if(!task.getResult().exists()){
+                    db.collection("Requests").document(doctor_id).collection("Pending").document(pat_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.getResult().exists()){
+                                request_bt.setText("Waiting for doctor's response...");
+                            }
 
-                else {
-                    request_bt.setText("Request Assistance");
-                    request_bt.setOnClickListener(DoctorDetails_Activity.this);
-                }
+                            else {
+                                request_bt.setText("Request Assistance");
+                                request_bt.setOnClickListener(DoctorDetails_Activity.this);
+                            }
+                        }
+                    });
+                }else supervised=1;
+            }
+        }).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(supervised==1)
+                request_bt.setText("Already under supervision");
             }
         });
+
 
 
 
