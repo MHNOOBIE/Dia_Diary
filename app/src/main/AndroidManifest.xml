@@ -43,7 +43,8 @@
         <activity android:name=".SupervisedPatient_Activity" />
         <activity android:name=".SupervisedGlucose_Activity" />
         <activity android:name=".SupervisedInsulin_Activity" />
-        <activity android:name=".SupervisedMixed_Activity"></activity>
+        <activity android:name=".SupervisedMixed_Activity" />
+        <activity android:name=".SupervisedReports_Activity"></activity>
     </application>
 
 </manifest>

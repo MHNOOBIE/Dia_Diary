@@ -18,13 +18,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Name"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +86,6 @@
             android:text="Insulin Tracker"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/glucoseTracker_bt" />
 
@@ -104,9 +102,24 @@
             android:text="Mixed Tracker"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/insulinTracker_bt" />
+
+        <Button
+            android:id="@+id/showReports_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="#f50057"
+            android:text="Show reports"
+            android:textColor="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mixedTracker_bt" />
 
 
     </android.support.constraint.ConstraintLayout>

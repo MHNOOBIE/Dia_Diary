@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SupervisedPatient_Activity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button glucoseTracker_bt, insulinTracker_bt,mixedTracker_bt;
+    private Button glucoseTracker_bt, insulinTracker_bt,mixedTracker_bt,showreports_bt;
     private TextView name_tv, email_tv, country_tv;
     private String doctor_id, pat_id;
     @Override
@@ -27,6 +27,7 @@ public class SupervisedPatient_Activity extends AppCompatActivity implements Vie
         glucoseTracker_bt = findViewById(R.id.glucoseTracker_bt);
         insulinTracker_bt = findViewById(R.id.insulinTracker_bt);
         mixedTracker_bt = findViewById(R.id.mixedTracker_bt);
+        showreports_bt = findViewById(R.id.showReports_bt);
 
 
         Intent intent = getIntent();
@@ -41,6 +42,7 @@ public class SupervisedPatient_Activity extends AppCompatActivity implements Vie
         glucoseTracker_bt.setOnClickListener(this);
         insulinTracker_bt.setOnClickListener(this);
         mixedTracker_bt.setOnClickListener(this);
+        showreports_bt.setOnClickListener(this);
 
 
     }
@@ -60,6 +62,11 @@ public class SupervisedPatient_Activity extends AppCompatActivity implements Vie
 
         else if(view.getId() == mixedTracker_bt.getId()){
             Intent intent = new Intent(SupervisedPatient_Activity.this,SupervisedMixed_Activity.class);
+            intent.putExtra("ID",pat_id);
+            startActivity(intent);
+        }
+        else if(view.getId()==showreports_bt.getId()){
+            Intent intent = new Intent(SupervisedPatient_Activity.this,SupervisedReports_Activity.class);
             intent.putExtra("ID",pat_id);
             startActivity(intent);
         }
