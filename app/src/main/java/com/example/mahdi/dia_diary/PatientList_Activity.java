@@ -39,6 +39,7 @@ public class PatientList_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_list_);
 
         final ArrayList<Users> patientArrayList = new ArrayList<>();
+        final ArrayList<String> patientIDList = new ArrayList<>();
 
         mauth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
@@ -64,13 +65,14 @@ public class PatientList_Activity extends AppCompatActivity {
                 }
                 if (patient_id.size() > 0) {
 
-                    for (String pat_id : patient_id) {
+                    for (final String pat_id : patient_id) {
 
                         db.collection("Users").document(pat_id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 Users user = documentSnapshot.toObject(Users.class);
                                 patientArrayList.add(user);
+                                patientIDList.add(pat_id);
                             }
                         }).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
@@ -92,9 +94,10 @@ public class PatientList_Activity extends AppCompatActivity {
                                             Users temp = patientArrayList.get(position);
                                             Intent intent = new Intent(PatientList_Activity.this,SupervisedPatient_Activity.class);
                                             intent.putExtra("Name",temp.name);
-                                            intent.putExtra("ID",patient_id.get(position));
+                                            intent.putExtra("ID",patientIDList.get(position));
                                             intent.putExtra("Email",temp.email);
                                             intent.putExtra("Country",temp.country);
+
                                             startActivity(intent);
 
                                         }
